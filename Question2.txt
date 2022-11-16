@@ -1,0 +1,65 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| assignment         |
+| information_schema |
+| mysql              |
+| performance_schema |
+| prm                |
+| students           |
+| sys                |
+| workers            |
++--------------------+
+8 rows in set (0.02 sec)
+
+mysql> use prm;
+Database changed
+mysql> show tables;
++---------------+
+| Tables_in_prm |
++---------------+
+| countries     |
+| country_new   |
++---------------+
+2 rows in set (0.00 sec)
+
+mysql> drop table country_new;
+Query OK, 0 rows affected (0.57 sec)
+
+mysql> show tables;
++---------------+
+| Tables_in_prm |
++---------------+
+| countries     |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> create table country_new like countries;
+Query OK, 0 rows affected (0.21 sec)
+
+mysql> show tables;
++---------------+
+| Tables_in_prm |
++---------------+
+| countries     |
+| country_new   |
++---------------+
+2 rows in set (0.00 sec)
+
+
+mysql> insert country_new select * from countries;
+Query OK, 5 rows affected (0.12 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql>  select * from country_new;
++------------+--------------+-----------+
+| country_id | country_name | region_id |
++------------+--------------+-----------+
+|          1 | italy        |         1 |
+|          2 | india        |         2 |
+|          3 | china        |         3 |
+|          4 | russia       |         4 |
+|          5 | unitedstate  |         5 |
++------------+--------------+-----------+
+5 rows in set (0.00 sec)
